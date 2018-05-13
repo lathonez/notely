@@ -88,6 +88,13 @@ function buildStates($stateProvider: StateProvider, $urlServiceProvider: UrlServ
   return states;
 }
 
+/**
+ * This function is called each time a state transitions
+ * to make if the user should be allowed to navigate to their chosen page
+ *
+ * @param transition
+ * @param $cookies
+ */
 function checkUserAuth(transition: any, $cookies: any): void {
   if (transition.to().protected && !UserService.isLoggedIn($cookies)) {
     // redirect to the 'login' state
