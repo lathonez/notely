@@ -1,11 +1,8 @@
 import { Injectable, IComponentOptions, IControllerConstructor, IController } from 'angular';
 
+
 /**
- * Main Application - Component Definition
- *
- * @export
- * @class App
- * @implements {ng.IComponentOptions}
+ * Notely App Component Definition
  */
 export class AppComponent implements IComponentOptions {
 

@@ -41,10 +41,13 @@ export class UserService {
       throw new Error('EMAIL EXISTS');
     }
 
+    // for now just give the default avatar for new users
     user.avatar = 'avatar.png';
 
+    // save the user to local storage
     this.storage.set(UserService.LOCAL_STORAGE_NAMESPACE, user.email, user);
 
+    // set the session cookie so the router will recognise them as being logged in
     this.setSession(user.email);
 
     return this.get(user.email);
@@ -63,6 +66,7 @@ export class UserService {
   public getLoggedInEmail(): string {
     return this.$cookies.get(UserService.SESSION_COOKIE_NAME);
   }
+
   /**
    * Returns true if a session for this user exists
    *
@@ -116,6 +120,7 @@ export class UserService {
    */
   private emailExists(email: string): boolean {
 
+    // when we register a new user we need to load all the existing emails to make sure there's no duplicates
     if (this.storage.getAll(UserService.LOCAL_STORAGE_NAMESPACE).find(user => user.email === email)) {
       return true;
     }

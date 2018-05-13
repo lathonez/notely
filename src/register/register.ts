@@ -3,16 +3,12 @@ import { Injectable, IComponentOptions, IControllerConstructor, IController } fr
 import {User, UserService} from '../shared/services/user';
 
 export class RegisterComponent implements IComponentOptions {
-
   public controller: Injectable<IControllerConstructor> = RegisterController;
   public template: string = require('./register.html').toString();
 }
 
 /**
- * home - Controller
- *
- * @export
- * @class HomeController
+ * Handles registration of new users
  */
 export class RegisterController implements IController {
 
@@ -29,6 +25,7 @@ export class RegisterController implements IController {
   public password: string = '';
   public passwordConf: string = '';
 
+  // an error message we might display to the user
   public error: string = '';
 
   // vendor services
@@ -58,15 +55,20 @@ export class RegisterController implements IController {
     // reset errors
     this.error = '';
 
+    // if the password doesn't match or is too short we'll get an error message back here
     let passwordValidation: string = this.validatePassword(this.password, this.passwordConf);
 
     if (passwordValidation) {
+      // set the error binding and return
       this.error = passwordValidation;
       return;
     }
 
     try {
+      // password checks out - try to register
       this.user.add({name: this.name, email: this.email, password: this.password});
+
+      // if we've got this far we can safely navigate to overview
       this.$state.go('overview');
     } catch (error) {
       this.error = this.errorHandler(error);
@@ -106,7 +108,7 @@ export class RegisterController implements IController {
   //
 
   /**
-   * Helper to display error messages to the user
+   * Translate errors thrown from the UserService into human form
    *
    * @param error
    * @returns {string}
@@ -120,6 +122,4 @@ export class RegisterController implements IController {
         return 'An unexpected error has occurred signing you up!'
     }
   }
-
-
 }

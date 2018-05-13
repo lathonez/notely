@@ -12,10 +12,7 @@ export class HeaderComponent implements IComponentOptions {
 }
 
 /**
- * home - Controller
- *
- * @export
- * @class HomeController
+ * Responsible for the top bar / header
  */
 export class HeaderController implements IController {
 
@@ -31,9 +28,11 @@ export class HeaderController implements IController {
   // notely services
   private user: UserService;
 
-  /**
-   * @param {*} $log Angular Log Service
-   */
+    /**
+     * @param {*} $log Angular Log Service
+     * @param $state
+     * @param user
+     */
   constructor($log: any, $state: any, user: UserService) {
     this.$log = $log.getInstance('Header', false);
     this.$log.debug('constructor');
@@ -46,6 +45,8 @@ export class HeaderController implements IController {
    */
   public logout(): void {
     this.user.logout();
+
+    // the router will take us back here anyway if we try to go to a protected page (overview etc)
     this.$state.go('login');
   }
 
@@ -54,6 +55,9 @@ export class HeaderController implements IController {
    */
   public $onInit(): void {
     this.$log.debug('onInit');
+
+    // get the user's email address to display in the header
+    // if they aren't logged in nothing will show up
     this.email = this.user.getLoggedInEmail();
   }
 }

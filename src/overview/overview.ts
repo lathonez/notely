@@ -3,17 +3,12 @@ import { Injectable, IComponentOptions, IControllerConstructor, IController } fr
 import {Note, NotesService} from '../shared/services/notes';
 
 export class OverviewComponent implements IComponentOptions {
-
   public controller: Injectable<IControllerConstructor> = OverviewController;
   public template: string = require('./overview.html').toString();
-  public bindings: { [binding: string]: string; } = {};
 }
 
 /**
- * home - Controller
- *
- * @export
- * @class HomeController
+ * Provides an overview of all notes in the system and allows users to navigate down to add a note
  */
 export class OverviewController implements IController {
 
@@ -39,7 +34,6 @@ export class OverviewController implements IController {
     this.$log = $log.getInstance('Overview');
     this.$log.debug('constructor');
     this.notesService = notesService;
-    this.notes = this.notesService.getAll();
   }
 
   /**
@@ -47,5 +41,8 @@ export class OverviewController implements IController {
    */
   public $onInit(): void {
     this.$log.debug('onInit');
+
+    // load all notes in from the service
+    this.notes = this.notesService.getAll();
   }
 }

@@ -4,7 +4,6 @@ import {Note, NotesService} from '../shared/services/notes';
 import {UserService} from '../shared/services/user';
 
 export class CreateAndViewComponent implements IComponentOptions {
-
   public controller: Injectable<IControllerConstructor> = CreateAndViewController;
   public template: string = require('./create-and-view.html').toString();
 }
@@ -53,7 +52,11 @@ export class CreateAndViewController implements IController {
    * Submit a note for creation and push the newly created note into our working array
    */
   public submit(): void {
+
+    // instead of going back to the notes service after submit to refresh the notes, add the new note as the first item in the array
     this.notes.splice(0, 0, this.notesService.add(this.userService.getLoggedInEmail(), this.title, this.note));
+
+    // need to reset the form after the user has submitted
     this.resetForm();
   }
 
@@ -70,7 +73,7 @@ export class CreateAndViewController implements IController {
   //
 
   /**
-   * Should reset the local model and fall form fields
+   * Clears data from the local model and resets validation
    */
   private resetForm(): void {
     this.title = '';

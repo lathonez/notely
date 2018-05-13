@@ -65,7 +65,7 @@ export class NotesService {
   //
 
   /**
-   * Generate an ID to use when storing a note
+   * Generate an ID to use when storing a note - this is way overkill for what we're doing, ideally it's just a serial
    * @returns {string}
    */
   private getUUID(): string {

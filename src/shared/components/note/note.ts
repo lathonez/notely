@@ -13,17 +13,17 @@ export class NoteComponent implements IComponentOptions {
 }
 
 /**
- * home - Controller
- *
- * @export
- * @class HomeController
+ * Responsible for displaying a single note
  */
 export class NoteController implements IController {
 
   // dependency injection
   public static $inject: Array<string> = ['$log', 'NotesService', 'UserService'];
 
+  // the note we're displaying
   public note: Note;
+
+  // the User who authored the note
   public author: User;
 
   // vendor services

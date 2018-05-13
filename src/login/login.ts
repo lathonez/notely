@@ -1,6 +1,6 @@
 import './login.scss';
 import { Injectable, IComponentOptions, IControllerConstructor, IController } from 'angular';
-import {User, UserService} from '../shared/services/user';
+import {UserService} from '../shared/services/user';
 
 export class LoginComponent implements IComponentOptions {
 
@@ -9,10 +9,7 @@ export class LoginComponent implements IComponentOptions {
 }
 
 /**
- * home - Controller
- *
- * @export
- * @class HomeController
+ * Authenticates the user and sets up their session
  */
 export class LoginController implements IController {
 
@@ -48,11 +45,9 @@ export class LoginController implements IController {
   }
 
   /**
-   * Login to Notely
-   *
-   * @returns {User}
+   * Login to Notely - catch any errors and display them nicely for the user
    */
-  public submit(): User {
+  public submit(): void {
     try {
       this.user.login(this.email, this.password);
       this.$state.go('overview');
@@ -69,6 +64,12 @@ export class LoginController implements IController {
     this.$log.debug('onInit');
   }
 
+  /**
+   * Translate errors thrown from the UserService into human form
+   *
+   * @param {Error} error
+   * @returns {string}
+   */
   private errorHandler(error: Error): string {
     switch (true) {
       case error.toString().indexOf('INVALID USERNAME OR PASSWORD') > -1:

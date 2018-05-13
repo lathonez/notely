@@ -46,7 +46,7 @@ export class LocalStorageService {
   }
 
   /**
-   * Get all values from a given namespace
+   * Get all values from a given namespace, leveraging getIds to find all the relevant storage keys
    *
    * @param {string} namespace
    * @returns {Array<any>}
@@ -61,7 +61,8 @@ export class LocalStorageService {
   //
 
   /**
-   * Get all ids (local storage keys) from a given namespace
+   * Get all ids (local storage keys) from a given namespace by iterating over everything in local
+   * storage to see what matches.
    *
    * @param {string} namespace
    * @returns {Array<string>}
@@ -85,7 +86,7 @@ export class LocalStorageService {
    *
    * @param {string} namespace
    * @param {string} id
-   * @returns {string}
+   * @returns {string} e.g. 'MY-NAMESPACE----------MY-ID'
    */
   private static getKey(namespace: string, id: string): string {
     return `${namespace}${LocalStorageService.NAMESPACE_KEY_SEP}${id}`;
