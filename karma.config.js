@@ -9,7 +9,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: ['ChromeNoSandbox'],
     singleRun: true,
     autoWatchBatchDelay: 300,
     captureTimeout: 60000,
@@ -55,6 +55,12 @@ module.exports = function (config) {
           file: 'summary.text'
         }
       ]
+    },
+    customLaunchers: {
+      ChromeNoSandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
     }
   });
 };
