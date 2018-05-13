@@ -1,0 +1,14 @@
+<div class="toolbarwrapper">
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools" flex="70">
+      <h1>{{$ctrl.title}}</h1>
+    </div>
+    <div ng-if="$ctrl.email" flex="30" layout="row" layout-align="end center">
+      <div layout="column" hide-xs class="logged-in-as">Logged in as {{$ctrl.email}}</div>
+      <md-button class="md-raised md-primary load-button" ng-click="$ctrl.logout()" layout="column">
+        <md-icon md-font-set="material-icons" aria-label="home">lock</md-icon>
+        Logout
+      </md-button>
+    </div>
+  </md-toolbar>
+</div>

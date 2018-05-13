@@ -1,0 +1,43 @@
+<app-header title="$ctrl.pageTitle"></app-header>
+
+<div layout="column" class="register">
+  <form name="registerForm">
+    <md-toolbar ng-if="$ctrl.error" class="md-warn">
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex">{{$ctrl.error}}</h2>
+      </div>
+    </md-toolbar>
+    <md-input-container layout="row">
+      <label>Name</label>
+      <input name="name" ng-model="$ctrl.name" autocomplete="name" required>
+      <div ng-messages="registerForm.name.$error">
+        <div ng-message="required">Please enter your name</div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>Email Address</label>
+      <input name="email" ng-model="$ctrl.email" type="email" autocomplete="email" required>
+      <div ng-messages="registerForm.email.$error">
+        <div ng-message="required">Please enter your email</div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>Password</label>
+      <input name="password" ng-model="$ctrl.password" type="password" autocomplete="new-password" required>
+      <div ng-messages="registerForm.password.$error">
+        <div ng-message="required">Please enter your password</div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>Password (confirm)</label>
+      <input name="passwordConf" ng-model="$ctrl.passwordConf" type="password" autocomplete="new-password" required>
+      <div ng-messages="registerForm.passwordConf.$error">
+        <div ng-message="required">Please confirm your passwords</div>
+      </div>
+    </md-input-container>
+    <md-button ng-disabled="registerForm.$invalid" class="md-raised md-primary load-button" type="submit" ng-click="$ctrl.submit()">
+      <md-icon md-font-set="material-icons" aria-label="register">person_add</md-icon>
+      Sign Up
+    </md-button>
+  </form>
+</div>

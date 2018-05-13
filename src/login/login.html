@@ -1,0 +1,35 @@
+<app-header title="$ctrl.pageTitle"></app-header>
+
+<div layout="column" class="register">
+  <form name="loginForm">
+    <md-toolbar ng-if="$ctrl.error" class="md-warn">
+      <div class="md-toolbar-tools">
+        <h2 class="md-flex">{{$ctrl.error}}</h2>
+      </div>
+    </md-toolbar>
+    <md-input-container layout="row">
+      <label>Email Address</label>
+      <input name="email" ng-model="$ctrl.email" type="email" autocomplete="email" required>
+      <div ng-messages="loginForm.email.$error">
+        <div ng-message="required">Please enter your email</div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <label>Password</label>
+      <input name="password" ng-model="$ctrl.password" type="password" autocomplete="new-password" required>
+      <div ng-messages="loginForm.password.$error">
+        <div ng-message="required">Please enter your password</div>
+      </div>
+    </md-input-container>
+    <md-input-container layout="row">
+      <md-button ng-disabled="loginForm.$invalid" class="md-raised md-primary load-button" ng-click="$ctrl.submit()">
+        <md-icon md-font-set="material-icons" aria-label="login">lock_open</md-icon>
+        Login
+      </md-button>
+      <md-button class="md-raised md-primary load-button" ui-sref="register">
+        <md-icon md-font-set="material-icons" aria-label="home">person_add</md-icon>
+        Sign Up
+      </md-button>
+    </md-input-container>
+  </form>
+</div>

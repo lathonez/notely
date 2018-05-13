@@ -1,0 +1,30 @@
+<app-header title="$ctrl.pageTitle"></app-header>
+
+<div class="notes-overview">
+  <div class="create">
+    <form name="$ctrl.notesForm">
+      <md-input-container layout="row">
+        <input name="title" ng-model="$ctrl.title" placeholder="Title" required>
+      </md-input-container>
+      <md-input-container class="md-block" md-no-float>
+        <textarea ng-model="$ctrl.note" placeholder="Note" required></textarea>
+      </md-input-container>
+      <md-button ng-disabled="$ctrl.notesForm.$invalid" class="md-raised md-primary load-button" type="submit" ng-click="$ctrl.submit()">
+        <md-icon md-font-set="material-icons" aria-label="notes">edit</md-icon>
+        Add Note
+      </md-button>
+      <md-button  class="md-raised md-primary load-button" ui-sref="overview">
+        <md-icon md-font-set="material-icons" aria-label="notes">table_chart</md-icon>
+        Overview
+      </md-button>
+    </form>
+
+    <md-list>
+      <note ng-repeat="note in $ctrl.notes" note="note"></note>
+    </md-list>
+</div>
+
+<!--
+
+
+<!--&ndash;&gt;-->

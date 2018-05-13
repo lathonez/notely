@@ -1,0 +1,14 @@
+// vendor imports
+@import '../../node_modules/angular-material/angular-material';
+
+// notely imports
+@import '../variables';
+
+.app {
+  height: 100%;
+  background-color: $baseBgColor;
+
+  nav {
+    text-align: center;
+  }
+}

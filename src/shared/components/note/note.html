@@ -1,0 +1,12 @@
+<md-list-item class="md-3-line">
+  <img ng-src="assets/{{$ctrl.author.avatar}}" class="md-avatar" alt="{{$ctrl.author.avatar}}">
+  <div class="md-list-item-text">
+    <div layout="row" layout-align="space-between center">
+      <div hide-xs><h5>{{$ctrl.author.name}}</h5></div>
+      <div class="note-title"><h3>{{$ctrl.note.title}}</h3></div>
+      <div hide-xs><h5>{{$ctrl.note.date | date:'medium'}}</h5></div>
+    </div>
+    <p>{{$ctrl.note.note}}</p>
+  </div>
+  <md-divider></md-divider>
+</md-list-item>
