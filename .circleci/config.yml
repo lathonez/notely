@@ -1,7 +1,7 @@
 version: 2.0
 jobs:
 
-  test:
+  build:
     docker:
       - image: lathonez/node-selenium
 
@@ -35,3 +35,13 @@ jobs:
 
       - store_test_results:
           path: /tmp/junit/
+
+      - run:
+          name: Deploy
+          # only deploy on master
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git config --global user.email "shazleto@gmail.com"
+              git config --global user.name "Circle CI Builder"
+              npm run release
+            fi
