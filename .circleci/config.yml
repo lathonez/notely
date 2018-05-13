@@ -40,7 +40,11 @@ workflows:
   version: 2
   main:
     jobs:
-      - test
+      - test:
+          filter:
+            branches:
+              ignore:
+                - gh-pages
       - deploy:
           requires:
             - test
