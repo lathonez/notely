@@ -22,7 +22,6 @@
     "release:copy": "cp ./src/index.html ./dist/index.html && cp -r ./src/assets ./dist/assets && cp CNAME ./dist/CNAME",
     "release:webpack": "node_modules/.bin/webpack --config ./webpack-release.config.js -p --bail",
     "test": "karma start ./karma.config.js --single-run",
-    "test:e2e": "parallelshell 'node_modules/.bin/webdriver-manager start' 'node_modules/.bin/protractor ./protractor.config.js'",
     "prepush": "npm test"
   },
   "dependencies": {
@@ -63,7 +62,6 @@
     "opener": "^1.4.1",
     "postcss-loader": "^0.8.1",
     "precss": "^1.4.0",
-    "protractor": "^3.0.0",
     "sass-loader": "^3.1.2",
     "string": "^3.3.1",
     "style-loader": "^0.13.0",
