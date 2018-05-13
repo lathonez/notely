@@ -35,16 +35,3 @@ jobs:
 
       - store_test_results:
           path: /tmp/junit/
-
-workflows:
-  version: 2
-  main:
-    jobs:
-      - test
-      - deploy:
-          requires:
-            - test
-          filters:
-            branches:
-              only:
-               - master

@@ -18,7 +18,7 @@
     "dev:clean": "rm -rf ./builds && mkdir builds",
     "dev:copy": "cp ./src/index.html ./builds/index.html && cp -r ./src/assets ./builds/assets",
     "pre-deploy": "cp -r ./builds/* deploy/",
-    "deploy": "ngh --no-silent",
+    "deploy": "ngh -m 'auto commit [ci skip]' --no-silent",
     "lint": "./node_modules/.bin/tslint --project tsconfig.json",
     "release": "npm run release:clean && npm run release:copy && npm run release:webpack",
     "release:clean": "rm -rf ./dist && mkdir dist",
