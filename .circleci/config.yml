@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: lathonez/node-selenium
 
-    working_directory: /assistant
+    working_directory: /notely
 
     steps:
       - checkout
@@ -40,7 +40,7 @@ workflows:
   version: 2
   main:
     jobs:
-      test
+      - test
       - deploy:
           requires:
             - test
