@@ -24,10 +24,10 @@ export class RegisterController implements IController {
   public pageTitle: string = 'Sign up for Notely';
 
   // form controls
-  public name: string = 'stephen';
-  public email: string = 'shazleto@gmail.com';
-  public password: string = 'password';
-  public passwordConf: string = 'password';
+  public name: string = '';
+  public email: string = '';
+  public password: string = '';
+  public passwordConf: string = '';
 
   public error: string = '';
 
