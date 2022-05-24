@@ -27,14 +27,14 @@
   },
   "dependencies": {
     "@uirouter/angularjs": "1.0.16",
-    "angular": "1.6.10",
+    "angular": "1.8.0",
     "angular-animate": "1.6.10",
     "angular-aria": "1.6.10",
     "angular-cookies": "1.6.10",
     "angular-material": "1.1.9",
     "angular-material-data-table": "0.10.10",
     "angular-messages": "1.6.10",
-    "lodash": "4.17.10",
+    "lodash": "4.17.21",
     "LogUnobtrusiveExtension": "git://github.com/lwhiteley/AngularLogExtender.git#0.0.14"
   },
   "devDependencies": {
